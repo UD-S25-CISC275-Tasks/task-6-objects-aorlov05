@@ -76,7 +76,14 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    const optionsMarkdown: string = question.options.reduce(
+        (previousValue: string, currentValue: string) => {
+            return `${previousValue}\n- ${currentValue}`;
+        },
+        "",
+    );
+
+    return `# ${question.name}\n${question.body}${optionsMarkdown}`;
 }
 
 /**
